@@ -37,6 +37,22 @@ class LinkedList {
     return tail;
   }
 
+  at(index) {
+    if (index < 0 || index >= this.#size) return null
+
+    if (this.#size === 0) return null;
+
+    let count = 0;
+    let node = this.#head;
+
+    while (count < index && node.nextNode !== null) {
+      count += 1;
+      node = node.nextNode;
+    }
+
+    return node;
+  }
+
   append(value) {
     if (this.#head === null) {
       this.#head = new Node(value);
@@ -91,4 +107,11 @@ linkedList.append(3);
 linkedList.prepend(0);
 console.log(linkedList.tail);
 console.log(linkedList.head);
+console.log(linkedList.at(0));
+console.log(linkedList.at(2))
+
+console.log(linkedList.at(3))
+console.log(linkedList.at(4))
+
+console.log(linkedList.size);
 console.log(linkedList.toString());
