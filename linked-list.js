@@ -6,10 +6,16 @@ class Node {
 }
 
 class LinkedList {
+  #size = 0
+
   constructor() {
     this.head = null;
     this.tail = null;
-    this.size = 0;
+    this.#size = 0;
+  }
+
+  get size() {
+    return this.#size;
   }
 
   append(value) {
@@ -25,7 +31,7 @@ class LinkedList {
       tail.nextNode = new Node(value);
     }
 
-    this.size += 1;
+    this.#size += 1;
   }
 
   prepend(value) {
@@ -37,7 +43,7 @@ class LinkedList {
       this.head.nextNode = temp;
     }
 
-    this.size += 1;
+    this.#size += 1;
   }
 
   toString() {
