@@ -13,23 +13,41 @@ class LinkedList {
   }
 
   append(value) {
-    if (this.tail === null && this.head === null) {
+    if (this.head === null) {
       this.tail = new Node(value);
       this.head = new Node(value);
-    } else if (this.head !== null && this.tail !== null) {
+    } else {
       const temp = this.head;
-      this.head  = new Node(value);
-      this.head.next = temp;
+      this.head = new Node(value);
+      this.head.nextNode = temp;
     }
 
     this.size += 1;
   }
+
+  toString() {
+    let prev = this.head;
+    let output = ``;
+
+    if (prev !== null) {
+
+      while (prev.nextNode !== null) {
+        const value = prev.value;
+        output += `(${value}) --> `;
+        prev = prev.nextNode;
+      }
+
+      output += `(${prev.value}) --> `; // tail - last element;
+    }
+    output += 'null';
+
+    return output;
+  }
 }
 
 const linkedList = new LinkedList();
-console.log(linkedList);
 linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
 
-console.log(linkedList);
+console.log(linkedList.toString());
