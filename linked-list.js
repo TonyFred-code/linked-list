@@ -74,6 +74,22 @@ class LinkedList {
     return tail;
   }
 
+  contains(value) {
+    if (this.#head === null) return false;
+
+    let currentHead = this.#head;
+
+    if (currentHead.value === value) return true;
+
+    while (currentHead.nextNode !== null) {
+      let next = currentHead.nextNode;
+      if (next.value === value) return true;
+      currentHead = next;
+    }
+
+    return false;
+  }
+
   append(value) {
     if (this.#head === null) {
       this.#head = new Node(value);
@@ -135,6 +151,8 @@ console.log(linkedList.at(3));
 console.log(linkedList.at(4));
 
 console.log(linkedList.size);
-
+console.log(linkedList.contains(3));
 linkedList.pop();
+console.log(linkedList.contains(3));
+
 console.log(linkedList.toString());
