@@ -14,12 +14,15 @@ class LinkedList {
 
   append(value) {
     if (this.head === null) {
-      this.tail = new Node(value);
       this.head = new Node(value);
     } else {
-      const temp = this.head;
-      this.head = new Node(value);
-      this.head.nextNode = temp;
+      let tail = this.head;
+
+      while (tail.nextNode !== null) {
+        tail = tail.nextNode;
+      }
+
+      tail.nextNode = new Node(value);
     }
 
     this.size += 1;
