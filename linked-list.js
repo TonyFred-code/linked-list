@@ -6,23 +6,24 @@ class Node {
 }
 
 class LinkedList {
-  #size = 0
+  #size = 0;
+  #head = null;
 
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.#size = 0;
-  }
+  // constructor() {
+  //   this.head = null;
+  //   this.tail = null;
+  //   this.#size = 0;
+  // }
 
   get size() {
     return this.#size;
   }
 
   append(value) {
-    if (this.head === null) {
-      this.head = new Node(value);
+    if (this.#head === null) {
+      this.#head = new Node(value);
     } else {
-      let tail = this.head;
+      let tail = this.#head;
 
       while (tail.nextNode !== null) {
         tail = tail.nextNode;
@@ -35,19 +36,19 @@ class LinkedList {
   }
 
   prepend(value) {
-    if (this.head === null) {
-      this.head = new Node(value);
+    if (this.#head === null) {
+      this.#head = new Node(value);
     } else {
-      const temp = this.head;
-      this.head = new Node(value);
-      this.head.nextNode = temp;
+      const temp = this.#head;
+      this.#head = new Node(value);
+      this.#head.nextNode = temp;
     }
 
     this.#size += 1;
   }
 
   toString() {
-    let prev = this.head;
+    let prev = this.#head;
     let output = ``;
 
     if (prev !== null) {
