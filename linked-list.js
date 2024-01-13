@@ -38,7 +38,7 @@ class LinkedList {
   }
 
   at(index) {
-    if (index < 0 || index >= this.#size) return null
+    if (index < 0 || index >= this.#size) return null;
 
     if (this.#size === 0) return null;
 
@@ -51,6 +51,27 @@ class LinkedList {
     }
 
     return node;
+  }
+
+  pop() {
+    if (this.#head === null) return undefined;
+
+    let tail = this.#head;
+
+    if (tail.nextNode === null) {
+      this.#head = null;
+      return tail;
+    }
+
+    let beforeTail = null;
+
+    while (tail.nextNode !== null) {
+      beforeTail = tail;
+      tail = tail.nextNode;
+    }
+
+    beforeTail.nextNode = null;
+    return tail;
   }
 
   append(value) {
@@ -108,10 +129,12 @@ linkedList.prepend(0);
 console.log(linkedList.tail);
 console.log(linkedList.head);
 console.log(linkedList.at(0));
-console.log(linkedList.at(2))
+console.log(linkedList.at(2));
 
-console.log(linkedList.at(3))
-console.log(linkedList.at(4))
+console.log(linkedList.at(3));
+console.log(linkedList.at(4));
 
 console.log(linkedList.size);
+
+linkedList.pop();
 console.log(linkedList.toString());
