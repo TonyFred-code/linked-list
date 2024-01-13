@@ -19,6 +19,24 @@ class LinkedList {
     return this.#size;
   }
 
+  get head() {
+    return this.#head;
+  }
+
+  get tail() {
+    let currentHead = this.#head;
+
+    if (currentHead === null) return null;
+
+    let tail = this.#head;
+
+    while (tail.nextNode !== null) {
+      tail = tail.nextNode;
+    }
+
+    return tail;
+  }
+
   append(value) {
     if (this.#head === null) {
       this.#head = new Node(value);
@@ -52,7 +70,6 @@ class LinkedList {
     let output = ``;
 
     if (prev !== null) {
-
       while (prev.nextNode !== null) {
         const value = prev.value;
         output += `(${value}) --> `;
@@ -72,4 +89,6 @@ linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
 linkedList.prepend(0);
+console.log(linkedList.tail);
+console.log(linkedList.head);
 console.log(linkedList.toString());
