@@ -28,6 +28,18 @@ class LinkedList {
     this.size += 1;
   }
 
+  prepend(value) {
+    if (this.head === null) {
+      this.head = new Node(value);
+    } else {
+      const temp = this.head;
+      this.head = new Node(value);
+      this.head.nextNode = temp;
+    }
+
+    this.size += 1;
+  }
+
   toString() {
     let prev = this.head;
     let output = ``;
@@ -52,5 +64,5 @@ const linkedList = new LinkedList();
 linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
-
+linkedList.prepend(0);
 console.log(linkedList.toString());
