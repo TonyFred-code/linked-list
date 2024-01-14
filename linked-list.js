@@ -74,7 +74,6 @@ class LinkedList {
     this.#size -= 1;
 
     return tail;
-
   }
 
   contains(value) {
@@ -123,6 +122,28 @@ class LinkedList {
     }
 
     return null;
+  }
+
+  removeAt(index) {
+    if (index < 0 || index >= this.#size) return null;
+
+    if (index === 0) {
+      if (this.#size === 1) {
+        this.#head = null;
+      } else {
+        this.#head.value = this.#head.nextNode.value;
+        this.#head.nextNode = this.#head.nextNode.nextNode;
+      }
+    } else {
+      let occupyingNode = this.at(index);
+      let prevNode = this.at(index - 1);
+
+      if (occupyingNode !== null && prevNode !== null) {
+        prevNode.nextNode = occupyingNode.nextNode;
+      }
+    }
+
+    this.#size -= 1;
   }
 
   append(value) {
@@ -177,13 +198,11 @@ linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
 linkedList.prepend(0);
-
-console.log(linkedList.find(3));
-
 linkedList.pop();
-linkedList.insertAt(3, 2);
-linkedList.insertAt(4, 3);
-linkedList.append(2);
-// linkedList.insertAt()
-console.log(linkedList.size);
+linkedList.removeAt(0);
+linkedList.removeAt(0);
+linkedList.removeAt(0);
+linkedList.prepend(1)
+console.log(linkedList.size)
+
 console.log(linkedList.toString());
