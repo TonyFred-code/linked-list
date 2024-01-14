@@ -90,6 +90,26 @@ class LinkedList {
     return false;
   }
 
+  find(value) {
+    if (this.#head === null) return null;
+
+    let node = this.#head;
+    let pos = 0;
+
+    if (node.value === value) return pos; // head
+
+    while (node.nextNode !== null) {
+      if (node.value === value) return pos; // anything in-between
+
+      node = node.nextNode;
+      pos += 1;
+    }
+
+    if (node.value === value) return pos; // tail
+
+    return null;
+  }
+
   append(value) {
     if (this.#head === null) {
       this.#head = new Node(value);
@@ -142,17 +162,10 @@ linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
 linkedList.prepend(0);
-console.log(linkedList.tail);
-console.log(linkedList.head);
-console.log(linkedList.at(0));
-console.log(linkedList.at(2));
 
-console.log(linkedList.at(3));
-console.log(linkedList.at(4));
+console.log(linkedList.find(3));
 
-console.log(linkedList.size);
-console.log(linkedList.contains(3));
 linkedList.pop();
-console.log(linkedList.contains(3));
+console.log(linkedList.find(3));
 
 console.log(linkedList.toString());
