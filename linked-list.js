@@ -71,7 +71,10 @@ class LinkedList {
     }
 
     beforeTail.nextNode = null;
+    this.#size -= 1;
+
     return tail;
+
   }
 
   contains(value) {
@@ -106,6 +109,18 @@ class LinkedList {
     }
 
     if (node.value === value) return pos; // tail
+
+    return null;
+  }
+
+  insertAt(value, index) {
+    if (index < 0 || index >= this.#size) return null;
+
+    let occupyingNode = this.at(index);
+
+    if (occupyingNode !== null) {
+      occupyingNode.value = value;
+    }
 
     return null;
   }
@@ -166,6 +181,9 @@ linkedList.prepend(0);
 console.log(linkedList.find(3));
 
 linkedList.pop();
-console.log(linkedList.find(3));
-
+linkedList.insertAt(3, 2);
+linkedList.insertAt(4, 3);
+linkedList.append(2);
+// linkedList.insertAt()
+console.log(linkedList.size);
 console.log(linkedList.toString());
