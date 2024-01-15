@@ -9,12 +9,6 @@ class LinkedList {
   #size = 0;
   #head = null;
 
-  // constructor() {
-  //   this.head = null;
-  //   this.tail = null;
-  //   this.#size = 0;
-  // }
-
   get size() {
     return this.#size;
   }
@@ -24,9 +18,7 @@ class LinkedList {
   }
 
   get tail() {
-    let currentHead = this.#head;
-
-    if (currentHead === null) return null;
+    if (this.#head === null) return null;
 
     let tail = this.#head;
 
