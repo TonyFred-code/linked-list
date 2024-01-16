@@ -18,7 +18,7 @@ class LinkedList {
   }
 
   get tail() {
-    if (this.#head === null) return null;
+    if (this.isEmpty()) return null;
 
     let tail = this.#head;
 
@@ -36,7 +36,7 @@ class LinkedList {
   at(index) {
     if (index < 0 || index >= this.#size) return null;
 
-    if (this.#size === 0) return null;
+    if (this.isEmpty()) return null;
 
     let count = 0;
     let node = this.#head;
@@ -50,7 +50,7 @@ class LinkedList {
   }
 
   pop() {
-    if (this.#head === null) return undefined;
+    if (this.isEmpty()) return undefined;
 
     let tail = this.#head;
 
@@ -73,7 +73,7 @@ class LinkedList {
   }
 
   contains(value) {
-    if (this.#head === null) return false;
+    if (this.isEmpty()) return false;
 
     let currentHead = this.#head;
 
@@ -89,7 +89,7 @@ class LinkedList {
   }
 
   find(value) {
-    if (this.#head === null) return null;
+    if (this.isEmpty()) return null;
 
     let node = this.#head;
     let index = 0;
