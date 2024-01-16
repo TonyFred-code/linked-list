@@ -88,18 +88,14 @@ class LinkedList {
     if (this.#head === null) return null;
 
     let node = this.#head;
-    let pos = 0;
+    let index = 0;
 
-    if (node.value === value) return pos; // head
-
-    while (node.nextNode !== null) {
-      if (node.value === value) return pos; // anything in-between
+    while (node !== null) {
+      if (node.value === value) return index;
 
       node = node.nextNode;
-      pos += 1;
+      index += 1;
     }
-
-    if (node.value === value) return pos; // tail
 
     return null;
   }
@@ -190,11 +186,11 @@ linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
 linkedList.prepend(0);
-linkedList.pop();
-linkedList.removeAt(0);
-linkedList.removeAt(0);
-linkedList.removeAt(0);
-linkedList.prepend(1)
+console.log(linkedList.find(0))
+console.log(linkedList.find(1))
+console.log(linkedList.find(2))
+console.log(linkedList.find(3))
+
 console.log(linkedList.size)
 
 console.log(linkedList.toString());
