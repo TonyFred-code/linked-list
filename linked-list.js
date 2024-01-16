@@ -167,21 +167,15 @@ class LinkedList {
   }
 
   toString() {
-    let prev = this.#head;
+    let node = this.#head;
     let output = ``;
 
-    if (prev !== null) {
-      while (prev.nextNode !== null) {
-        const value = prev.value;
-        output += `(${value}) --> `;
-        prev = prev.nextNode;
-      }
-
-      output += `(${prev.value}) --> `; // tail - last element;
+    while (node !== null) {
+      output += `(${node.value}) --> `;
+      node = node.nextNode;
     }
-    output += 'null';
 
-    return output;
+    return (output += 'null');
   }
 }
 
@@ -190,11 +184,11 @@ linkedList.append(1);
 linkedList.append(2);
 linkedList.append(3);
 linkedList.prepend(0);
-console.log(linkedList.find(0))
-console.log(linkedList.find(1))
-console.log(linkedList.find(2))
-console.log(linkedList.find(3))
+console.log(linkedList.find(0));
+console.log(linkedList.find(1));
+console.log(linkedList.find(2));
+console.log(linkedList.find(3));
 
-console.log(linkedList.size)
+console.log(linkedList.size);
 
 console.log(linkedList.toString());
