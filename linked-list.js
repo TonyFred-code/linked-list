@@ -29,6 +29,10 @@ class LinkedList {
     return tail;
   }
 
+  isEmpty() {
+    return this.#size === 0;
+  }
+
   at(index) {
     if (index < 0 || index >= this.#size) return null;
 
