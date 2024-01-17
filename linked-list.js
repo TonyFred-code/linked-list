@@ -128,10 +128,14 @@ class LinkedList {
   removeAt(index) {
     if (index < 0 || index >= this.#size) return null;
 
+    let removedValue = null;
+
     if (index === 0) {
       if (this.#size === 1) {
+        removedValue = this.#head.value;
         this.#head = null;
       } else {
+        removedValue = this.#head.value;
         this.#head.value = this.#head.nextNode.value;
         this.#head.nextNode = this.#head.nextNode.nextNode;
       }
@@ -140,11 +144,13 @@ class LinkedList {
       let prevNode = this.at(index - 1);
 
       if (occupyingNode !== null && prevNode !== null) {
+        removedValue = occupyingNode.value;
         prevNode.nextNode = occupyingNode.nextNode;
       }
     }
 
     this.#size -= 1;
+    return removedValue;
   }
 
   append(value) {
