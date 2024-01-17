@@ -105,15 +105,24 @@ class LinkedList {
   }
 
   insertAt(value, index) {
-    if (index < 0 || index >= this.#size) return null;
-
-    let occupyingNode = this.at(index);
-
-    if (occupyingNode !== null) {
-      occupyingNode.value = value;
+    if (index < 0) {
+      // Invalid index, cannot insert
+      return null;
     }
 
-    return null;
+    if (index === 0) {
+      this.prepend(value);
+    } else if (index >= this.#size) {
+      this.append(value);
+    } else {
+      const newNode = new Node(value);
+      const previousNode = this.at(index - 1);
+
+      newNode.nextNode = previousNode.nextNode;
+      previousNode.nextNode = newNode;
+    }
+
+    this.#size += 1;
   }
 
   removeAt(index) {
@@ -190,5 +199,6 @@ console.log(linkedList.find(2));
 console.log(linkedList.find(3));
 
 console.log(linkedList.size);
+linkedList.insertAt(5, 12);
 
 console.log(linkedList.toString());
