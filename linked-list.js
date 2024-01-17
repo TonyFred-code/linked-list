@@ -4,6 +4,34 @@ module.exports = class LinkedList {
   #size = 0;
   #head = null;
 
+  append(value) {
+    if (this.#head === null) {
+      this.#head = new Node(value);
+    } else {
+      let tail = this.#head;
+
+      while (tail.nextNode !== null) {
+        tail = tail.nextNode;
+      }
+
+      tail.nextNode = new Node(value);
+    }
+
+    this.#size += 1;
+  }
+
+  prepend(value) {
+    if (this.#head === null) {
+      this.#head = new Node(value);
+    } else {
+      const temp = this.#head;
+      this.#head = new Node(value);
+      this.#head.nextNode = temp;
+    }
+
+    this.#size += 1;
+  }
+
   get size() {
     return this.#size;
   }
@@ -99,6 +127,18 @@ module.exports = class LinkedList {
     return null;
   }
 
+  toString() {
+    let node = this.#head;
+    let output = ``;
+
+    while (node !== null) {
+      output += `(${node.value}) -> `;
+      node = node.nextNode;
+    }
+
+    return (output += 'null');
+  }
+
   insertAt(value, index) {
     if (index < 0) {
       // Invalid index, cannot insert
@@ -146,45 +186,5 @@ module.exports = class LinkedList {
 
     this.#size -= 1;
     return removedValue;
-  }
-
-  append(value) {
-    if (this.#head === null) {
-      this.#head = new Node(value);
-    } else {
-      let tail = this.#head;
-
-      while (tail.nextNode !== null) {
-        tail = tail.nextNode;
-      }
-
-      tail.nextNode = new Node(value);
-    }
-
-    this.#size += 1;
-  }
-
-  prepend(value) {
-    if (this.#head === null) {
-      this.#head = new Node(value);
-    } else {
-      const temp = this.#head;
-      this.#head = new Node(value);
-      this.#head.nextNode = temp;
-    }
-
-    this.#size += 1;
-  }
-
-  toString() {
-    let node = this.#head;
-    let output = ``;
-
-    while (node !== null) {
-      output += `(${node.value}) --> `;
-      node = node.nextNode;
-    }
-
-    return (output += 'null');
   }
 };
